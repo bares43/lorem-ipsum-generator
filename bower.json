@@ -11,5 +11,8 @@
     "ipsum",
     "generator"
   ],
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "qunit": "~1.18.0"
+  }
 }

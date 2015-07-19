@@ -69,4 +69,4 @@ MIT<br />
 Jan Bares, 2015 <janbares43@gmail.com> <http://janbares.cz>
 
 ## Version
-0.1.0
+0.1.1

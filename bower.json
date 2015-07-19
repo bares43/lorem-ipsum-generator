@@ -1,0 +1,18 @@
+{
+  "name": "Lorem Ipsum generator",
+  "version": "1.0.0",
+  "authors": [
+    "Jan Bares <janbares43@gmail.com>"
+  ],
+  "description": "Lorem Ipsum generator",
+  "main": "lorem_ipsum_generator.js",
+  "keywords": [
+    "lorem",
+    "ipsum",
+    "generator"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "jquery": "~2.1.4"
+  }
+}

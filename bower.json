@@ -1,8 +1,8 @@
 {
   "name": "Lorem Ipsum generator",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "authors": [
-    "Jan Bares <janbares43@gmail.com>"
+    "Jan Bares <janbares43@gmail.com>  (http://janbares.cz)"
   ],
   "description": "Lorem Ipsum generator",
   "main": "lorem_ipsum_generator.js",

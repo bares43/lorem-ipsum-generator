@@ -1,6 +1,6 @@
 # Lorem Ipsum generator
 
-Lorem Ipsum generator which allows generate characters, words or paragraphs of specified length, remove some characters from text or add characters to specified positions.
+Lorem Ipsum generator which allows generate characters, words, sentences or paragraphs of specified length, remove some characters from text or add characters to specified positions.
 
 ## Usage
 ```javascript
@@ -32,7 +32,7 @@ var lorem = lorem_ipsum_generator({
 ```
 
 ## Params
-- type : lorem_ipsum_generator.TYPE_CHARACTERS (by default) | lorem_ipsum_generator.TYPE_WORDS | lorem_ipsum_generator.TYPE_PARAGRAPHS
+- type : lorem_ipsum_generator.TYPE_CHARACTERS (by default) | lorem_ipsum_generator.TYPE_WORDS | lorem_ipsum_generator.TYPE_SENTENCES | lorem_ipsum_generator.TYPE_PARAGRAPHS
     - type of lorem ipsum text
 - length : number (3)
     - length of lorem ipsum (amount of characters or words or paragraphs, this depends on type parameter)

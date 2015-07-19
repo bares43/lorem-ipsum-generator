@@ -6,6 +6,7 @@
 
 lorem_ipsum_generator.TYPE_CHARACTERS = "type_characters";
 lorem_ipsum_generator.TYPE_WORDS = "type_words";
+lorem_ipsum_generator.TYPE_SENTENCES = "type_sentences";
 lorem_ipsum_generator.TYPE_PARAGRAPHS = "type_paragraphs";
 
 function lorem_ipsum_generator(user_options){
@@ -56,7 +57,7 @@ function lorem_ipsum_generator(user_options){
         }
     }
 
-    if(options.remove && options.type != lorem_ipsum_generator.TYPE_WORDS){
+    if(options.remove && options.type != lorem_ipsum_generator.TYPE_WORDS && options.type != lorem_ipsum_generator.TYPE_SENTENCES){
         for(i = 0;i<lorem_paragraphs.length;i++){
             lorem_paragraphs[i] = lorem_paragraphs[i].replace(removeRegular,"");
         }
@@ -70,6 +71,19 @@ function lorem_ipsum_generator(user_options){
             var words = lorem_join.split(" ");
             for(i = 0;i < options.length;i++){
                 lorem += words[i % words.length];
+                if(i < options.length-1){
+                    lorem += " ";
+                }
+            }
+            if(options.remove){
+                lorem = lorem.replace(removeRegular,"");
+            }
+            break;
+        case lorem_ipsum_generator.TYPE_SENTENCES:
+            var lorem_join = lorem_paragraphs.join();
+            var sentences = lorem_join.split(". ");
+            for(i = 0;i < options.length;i++){
+                lorem += sentences[i % sentences.length]+".";
                 if(i < options.length-1){
                     lorem += " ";
                 }

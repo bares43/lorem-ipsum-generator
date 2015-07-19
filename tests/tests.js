@@ -18,6 +18,20 @@ QUnit.test("Characters", function(assert){
     assert.strictEqual(lorem_ipsum_generator({shuffle:false}),lorem_ipsum_generator({shuffle:false,type:lorem_ipsum_generator.TYPE_CHARACTERS}))
 });
 
+QUnit.test("Sentences", function(assert){
+    assert.strictEqual(lorem_ipsum_generator({shuffle:false, type:lorem_ipsum_generator.TYPE_SENTENCES,length:2}),"Nam quis nulla. Integer malesuada.");
+    assert.strictEqual(lorem_ipsum_generator({shuffle:false, type:lorem_ipsum_generator.TYPE_SENTENCES,length:2,remove:true}),"NamquisnullaIntegermalesuada");
+    assert.strictEqual(lorem_ipsum_generator({shuffle:false, type:lorem_ipsum_generator.TYPE_SENTENCES,length:2,remove:true,removeChars:["a"]}),"Nm quis null. Integer mlesud.");
+    assert.strictEqual(lorem_ipsum_generator({shuffle:false, type:lorem_ipsum_generator.TYPE_SENTENCES,length:2,addChars:[{
+        char : "a",
+        positions : [0]
+    }]}),"aNam quis nulla. Integer malesuada.");
+    assert.strictEqual(lorem_ipsum_generator({shuffle:false, type:lorem_ipsum_generator.TYPE_SENTENCES,length:2,remove:true,removeChars:["a"],addChars:[{
+        char : "a",
+        positions : [0]
+    }]}),"aNm quis null. Integer mlesud.");
+});
+
 QUnit.test("Words", function(assert){
     assert.strictEqual(lorem_ipsum_generator({shuffle:false, type:lorem_ipsum_generator.TYPE_WORDS,length:2}),"Nam quis");
     assert.strictEqual(lorem_ipsum_generator({shuffle:false, type:lorem_ipsum_generator.TYPE_WORDS,length:2,remove:true}),"Namquis");

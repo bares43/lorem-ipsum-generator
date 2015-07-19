@@ -35,7 +35,7 @@ var lorem = lorem_ipsum_generator({
 - type : lorem_ipsum_generator.TYPE_CHARACTERS (by default) | lorem_ipsum_generator.TYPE_WORDS | lorem_ipsum_generator.TYPE_SENTENCES | lorem_ipsum_generator.TYPE_PARAGRAPHS
     - type of lorem ipsum text
 - length : number (3)
-    - length of lorem ipsum (amount of characters or words or paragraphs, this depends on type parameter)
+    - length of lorem ipsum (amount of characters or words or sentences or paragraphs, this depends on type parameter)
 - wrapHTML : boolean (false)
     - wrap paragraphs with HTMl p tag; works only if type is set to lorem_ipsum_generator.TYPE_PARAGRAPHS
 - addChars : array
@@ -65,8 +65,8 @@ var lorem = lorem_ipsum_generator({
     - get random lorem ipsum text
     
 ## Licence
-MIT
-Author: Jan Bares <janbares43@gmail.com>
+MIT<br />
+Jan Bares, 2015 <janbares43@gmail.com> <http://janbares.cz>
 
 ## Version
 0.1.0

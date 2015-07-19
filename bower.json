@@ -4,7 +4,7 @@
   "authors": [
     "Jan Bares <janbares43@gmail.com>  (http://janbares.cz)"
   ],
-  "description": "Lorem Ipsum generator",
+  "description": "Lorem Ipsum generator which allows generate characters, words or paragraphs of specified length, remove some characters from text or add characters to specified positions",
   "main": "lorem_ipsum_generator.js",
   "keywords": [
     "lorem",

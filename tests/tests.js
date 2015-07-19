@@ -1,4 +1,5 @@
 QUnit.test("Characters", function(assert){
+    assert.notStrictEqual(lorem_ipsum_generator(),undefined);
     assert.strictEqual(lorem_ipsum_generator({shuffle:false, length:8}),"Nam quis");
     assert.strictEqual(lorem_ipsum_generator({shuffle:false, length:8,remove:true}),"Namquisn");
     assert.strictEqual(lorem_ipsum_generator({shuffle:false, length:11,remove:true,removeChars:["a","u"]}),"Nm qis nll.");

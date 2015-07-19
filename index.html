@@ -3,45 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <title>Lorem Ipsum generator examples</title>
-    <script src="jquery-2.1.4.min.js"></script>
     <script src="lorem_ipsum_generator.js"></script>
-    <script type="text/javascript">
-        $(document).ready(function(){
-            var $result = $("#result");
-
-            // simple lorem ipsum (by default 3 chars)
-            var lorem = lorem_ipsum_generator();
-            $result.append($("<div>").text(lorem));
-
-            // defined length
-            lorem = lorem_ipsum_generator({length:10});
-            $result.append($("<div>").text(lorem));
-
-            // 10 words without spaces, dotes and commas
-            lorem = lorem_ipsum_generator({
-                length : 10,
-                type : lorem_ipsum_generator.TYPE_WORDS,
-                remove : true
-            });
-            $result.append($("<div>").text(lorem));
-
-            // 10 words without spaces, dotes and commas but then add spaces to positions 5,10 and 15
-            lorem = lorem_ipsum_generator({
-                length : 10,
-                type : lorem_ipsum_generator.TYPE_WORDS,
-                remove : true,
-                addChars : [
-                    {
-                        char : " ",
-                        positions : [5,10,15]
-                    }
-                ]
-            });
-            $result.append($("<div>").text(lorem));
-        });
-    </script>
 </head>
 <body>
     <div id="result"></div>
+
+    <script type="text/javascript">
+        var result = document.getElementById("result");
+
+        // simple lorem ipsum (by default 3 chars)
+        var div = document.createElement("div");
+        div.innerHTML = lorem_ipsum_generator();
+        result.appendChild(div);
+
+        // defined length
+        div = document.createElement("div");
+        div.innerHTML = lorem_ipsum_generator({length:10});
+        result.appendChild(div);
+
+        // 10 words without spaces, dotes and commas
+        div = document.createElement("div");
+        div.innerHTML = lorem_ipsum_generator({
+            length : 10,
+            type : lorem_ipsum_generator.TYPE_WORDS,
+            remove : true
+        });
+        result.appendChild(div);
+
+
+        // 10 words without spaces, dotes and commas but then add spaces to positions 5,10 and 15
+        div = document.createElement("div");
+        div.innerHTML = lorem_ipsum_generator({
+            length : 10,
+            type : lorem_ipsum_generator.TYPE_WORDS,
+            remove : true,
+            addChars : [
+                {
+                    char : " ",
+                    positions : [5,10,15]
+                }
+            ]
+        });
+        result.appendChild(div);
+    </script>
 </body>
 </html>

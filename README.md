@@ -3,9 +3,6 @@
 Lorem Ipsum generator which allows generate characters, words or paragraphs of specified length, remove some characters from text or add characters to specified positions.
 
 ## Usage
-
-jQuery is needed!
-
 ```javascript
 // simple lorem ipsum (by default 3 chars)
 var lorem = lorem_ipsum_generator();

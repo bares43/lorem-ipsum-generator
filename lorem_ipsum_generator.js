@@ -8,11 +8,11 @@ lorem_ipsum_generator.TYPE_CHARACTERS = "type_characters";
 lorem_ipsum_generator.TYPE_WORDS = "type_words";
 lorem_ipsum_generator.TYPE_PARAGRAPHS = "type_paragraphs";
 
-function lorem_ipsum_generator(options){
+function lorem_ipsum_generator(user_options){
 
     var i,j;
 
-    var defaults = {
+    var options = {
         type : lorem_ipsum_generator.TYPE_CHARACTERS,
         length : '3',
         wrapHTML : false,
@@ -21,7 +21,14 @@ function lorem_ipsum_generator(options){
         removeChars : [" ",",","\\."],
         shuffle : true
     };
-    var opts = $.extend({}, defaults, options);
+
+    if(user_options !== undefined){
+        for(var key in options){
+            if(user_options.hasOwnProperty(key)){
+                options[key] = user_options[key];
+            }
+        }
+    }
 
     var lorem_paragraphs = [
         "Nam quis nulla. Integer malesuada. In in enim a arcu imperdiet malesuada. Sed vel lectus. Donec odio urna, tempus molestie, porttitor ut, iaculis quis, sem. Phasellus rhoncus. Aenean id metus id velit ullamcorper pulvinar. Vestibulum fermentum tortor id mi. Pellentesque ipsum. Nulla non arcu lacinia neque faucibus fringilla. Nulla non lectus sed nisl molestie malesuada. Proin in tellus sit amet nibh dignissim sagittis. Vivamus luctus egestas leo. Maecenas sollicitudin. Nullam rhoncus aliquam metus. Etiam egestas wisi a erat.",
@@ -36,9 +43,9 @@ function lorem_ipsum_generator(options){
         "Aenean placerat. In vulputate urna eu arcu. Aliquam erat volutpat. Suspendisse potenti. Morbi mattis felis at nunc. Duis viverra diam non justo. In nisl. Nullam sit amet magna in magna gravida vehicula. Mauris tincidunt sem sed arcu. Nunc posuere. Nullam lectus justo, vulputate eget, mollis sed, tempor sed, magna. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Etiam neque. Curabitur ligula sapien, pulvinar a, vestibulum quis, facilisis vel, sapien. Nullam eget nisl. Donec vitae arcu."
     ];
 
-    var removeRegular = new RegExp("("+opts.removeChars.join("|")+")","g");
+    var removeRegular = new RegExp("("+options.removeChars.join("|")+")","g");
 
-    if(opts.shuffle){
+    if(options.shuffle){
         for (i = lorem_paragraphs.length-1; i >=0; i--) {
 
             var randomIndex = Math.floor(Math.random()*(i+1));
@@ -49,7 +56,7 @@ function lorem_ipsum_generator(options){
         }
     }
 
-    if(opts.remove && opts.type != lorem_ipsum_generator.TYPE_WORDS){
+    if(options.remove && options.type != lorem_ipsum_generator.TYPE_WORDS){
         for(i = 0;i<lorem_paragraphs.length;i++){
             lorem_paragraphs[i] = lorem_paragraphs[i].replace(removeRegular,"");
         }
@@ -57,24 +64,24 @@ function lorem_ipsum_generator(options){
 
     var lorem = "";
 
-    switch(opts.type){
+    switch(options.type){
         case lorem_ipsum_generator.TYPE_WORDS:
             var lorem_join = lorem_paragraphs.join();
             var words = lorem_join.split(" ");
-            for(i = 0;i < opts.length;i++){
+            for(i = 0;i < options.length;i++){
                 lorem += words[i % words.length];
-                if(i < opts.length-1){
+                if(i < options.length-1){
                     lorem += " ";
                 }
             }
-            if(opts.remove){
+            if(options.remove){
                 lorem = lorem.replace(removeRegular,"");
             }
             break;
         case lorem_ipsum_generator.TYPE_PARAGRAPHS:
-            for(i = 0;i < opts.length;i++){
+            for(i = 0;i < options.length;i++){
                 var p = lorem_paragraphs[i % lorem_paragraphs.length];
-                if(opts.wrapHTML){
+                if(options.wrapHTML){
                     p = "<p>" + p + "</p>";
                 }
                 lorem += p;
@@ -82,24 +89,24 @@ function lorem_ipsum_generator(options){
             break;
         default:
             var lorem_characters = lorem_paragraphs.join();
-            for(i = 0;i < opts.length;i++){
+            for(i = 0;i < options.length;i++){
                 lorem += lorem_characters.charAt(i % lorem_characters.length);
             }
             break;
     }
 
-    if(opts.addChars.length > 0){
+    if(options.addChars.length > 0){
         var chars_count = 0;
         var chars = [];
-        for(i = 0;i<opts.addChars.length;i++){
-            var char = opts.addChars[i];
+        for(i = 0;i<options.addChars.length;i++){
+            var char = options.addChars[i];
             for(j = 0;j<char.positions.length;j++){
-                chars[char.positions[j]] = opts.addChars[i].char;
-                chars_count += opts.addChars[i].char.length;
+                chars[char.positions[j]] = options.addChars[i].char;
+                chars_count += options.addChars[i].char.length;
             }
         }
 
-        if(opts.type === lorem_ipsum_generator.TYPE_CHARACTERS) {
+        if(options.type === lorem_ipsum_generator.TYPE_CHARACTERS) {
             lorem = lorem.substr(0, lorem.length - chars_count);
         }
 

@@ -29,6 +29,12 @@ var lorem = lorem_ipsum_generator({
         }
     ]
 });
+
+// 50 characters with capital letters in the beginning of all words
+var lorem = lorem_ipsum_generator({
+    length : 50,
+    textSize : lorem_ipsum_generator.TEXT_SIZE_CAPITALIZE
+});
 ```
 
 ## Params
@@ -63,6 +69,8 @@ var lorem = lorem_ipsum_generator({
     ```
 - shuffle : boolean (true)
     - get random lorem ipsum text
+- textSize : lorem_ipsum_generator.TEXT_SIZE_CAPITALIZE_SENTENCE (default) | lorem_ipsum_generator.TEXT_SIZE_CAPITALIZE_TEXT | lorem_ipsum_generator.TEXT_SIZE_CAPITALIZE | lorem_ipsum_generator.TEXT_SIZE_UPPERCASE | lorem_ipsum_generator.TEXT_SIZE_LOWERCASE           
+    - set size of text (capital letter in the beggining of all sentences, whole text or every word, all letters capital or all letters lower            
     
 ## Licence
 MIT<br />

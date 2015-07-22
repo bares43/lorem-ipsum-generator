@@ -45,6 +45,14 @@
             ]
         });
         result.appendChild(div);
+
+        // capitalized text
+        div = document.createElement("div");
+        div.innerHTML = lorem_ipsum_generator({
+            length : 50,
+            textSize : lorem_ipsum_generator.TEXT_SIZE_CAPITALIZE
+        });
+        result.appendChild(div);
     </script>
 </body>
 </html>

@@ -9,6 +9,12 @@ lorem_ipsum_generator.TYPE_WORDS = "type_words";
 lorem_ipsum_generator.TYPE_SENTENCES = "type_sentences";
 lorem_ipsum_generator.TYPE_PARAGRAPHS = "type_paragraphs";
 
+lorem_ipsum_generator.TEXT_SIZE_LOWERCASE = "text_size_lowercase";
+lorem_ipsum_generator.TEXT_SIZE_UPPERCASE = "text_size_uppercase";
+lorem_ipsum_generator.TEXT_SIZE_CAPITALIZE = "text_size_capitalize";
+lorem_ipsum_generator.TEXT_SIZE_CAPITALIZE_TEXT = "text_size_capitalize_text";
+lorem_ipsum_generator.TEXT_SIZE_CAPITALIZE_SENTENCE = "text_size_capitalize_sentence";
+
 function lorem_ipsum_generator(user_options){
 
     var i,j;
@@ -20,7 +26,8 @@ function lorem_ipsum_generator(user_options){
         addChars : [],
         remove : false,
         removeChars : [" ",",","\\."],
-        shuffle : true
+        shuffle : true,
+        textSize : lorem_ipsum_generator.TEXT_SIZE_CAPITALIZE_SENTENCE
     };
 
     if(user_options !== undefined){
@@ -129,6 +136,35 @@ function lorem_ipsum_generator(user_options){
                 lorem = lorem.slice(0,i) + chars[i] + lorem.slice(i);
             }
         }
+    }
+
+    switch (options.textSize){
+        case lorem_ipsum_generator.TEXT_SIZE_LOWERCASE:
+            lorem = lorem.toLowerCase();
+            break;
+        case lorem_ipsum_generator.TEXT_SIZE_UPPERCASE:
+            lorem = lorem.toUpperCase();
+            break;
+        case lorem_ipsum_generator.TEXT_SIZE_CAPITALIZE:
+            lorem = lorem.toLowerCase();
+            var words = lorem.split(" ");
+            for(i = 0;i < words.length; ++i){
+                words[i] = words[i].charAt(0).toUpperCase() + words[i].slice(1);
+            }
+            lorem = words.join(" ");
+            break;
+        case lorem_ipsum_generator.TEXT_SIZE_CAPITALIZE_TEXT:
+            lorem = lorem.toLowerCase();
+            lorem = lorem.charAt(0).toUpperCase() + lorem.slice(1);
+            break;
+        default:
+            lorem = lorem.toLowerCase();
+            lorem = lorem.charAt(0).toUpperCase() + lorem.slice(1);
+            var reg = /(\. ?)|(<p>)/gi, result;
+            while (result = reg.exec(lorem)) {
+                lorem = lorem.slice(0, result.index + result[0].length) + lorem.charAt(result.index + result[0].length).toUpperCase() + lorem.slice(result.index + result[0].length + 1);
+            }
+            break;
     }
 
     return lorem;
